@@ -1,0 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=League+Spartan:wght@100..900&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-main: #4b5b5e;
+  --color-background: ##eeedea;
+  --font-julius: "Julius Sans One", sans-serif;
+  --font-league: "League Spartan", sans-serif;
+}
