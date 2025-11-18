@@ -10,12 +10,13 @@
       href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=League+Spartan:wght@100..900&display=swap"
       rel="stylesheet"
     />
+    <script src="src/js/ui/loginModal.js" defer></script>
   </head>
   <body class="bg-[#EEEDEA] font-league font-thin">
     <nav
-      class="bg-[#EEEDEA] flex justify-between items-center py-3 px-5 border-b-2 border-b-main sticky top-0"
+      class="bg-[#EEEDEA] flex justify-between items-center py-3 px-5 border-b-2 border-b-main sticky top-0 z-10"
     >
-      <div>
+      <div class="flex items-center">
         <a href="#">
           <img
             class="h-16 cursor-pointer"
@@ -24,8 +25,11 @@
           />
         </a>
       </div>
+      <h2 class="hidden md:block text-2xl pl-5 font-julius text-center">
+        The Auction House
+      </h2>
       <div>
-        <p class="cursor-pointer">Login/sign up</p>
+        <p id="login-btn" class="cursor-pointer">Login/sign up</p>
       </div>
     </nav>
     <div class="py-3 flex justify-between px-5 border-b-2 border-b-main">
@@ -39,6 +43,53 @@
         id="search"
         placeholder="Search..."
       />
+    </div>
+    <!-- LOGIN/SIGN UP MODAL -->
+    <div
+      id="login-modal"
+      class="h-screen w-screen absolute top-0 z-20 backdrop-blur-xs justify-center py-20 hidden"
+    >
+      <div class="border-2 border-main w-96 h-fit pb-12 bg-white rounded-3xl">
+        <div class="flex justify-between py-5 px-5 border-b-2 border-b-main">
+          <h2>Welcome, Log in or sign up!</h2>
+          <ion-icon
+            id="close-login-modal"
+            class="text-2xl text-main cursor-pointer"
+            name="close-outline"
+          ></ion-icon>
+        </div>
+        <p class="py-5 px-5">
+          Dont have an account?
+          <span class="underline text-main cursor-pointer">Sign up!</span>
+        </p>
+        <div>
+          <h2 class="font-julius px-5">log in</h2>
+          <form class="flex flex-col px-5 py-5" action="login">
+            <label for="email">Email</label>
+            <input
+              class="border border-main py-1 px-2 w-full mb-5 bg-gray-200 rounded-xl"
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Email..."
+            />
+            <label for="password">Password</label>
+            <input
+              class="border border-main py-1 px-2 w-full mb-16 bg-gray-200 rounded-xl"
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Password..."
+            />
+            <button
+              class="border border-main py-1 px-2 w-fit self-center text-2xl rounded-xl hover:bg-main hover:text-white cursor-pointer"
+              type="submit"
+            >
+              Log in
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
     <main>
       <!-- HEADER SECTION -->
@@ -57,20 +108,291 @@
             class="absolute inset-0 flex flex-col items-center justify-center text-center px-4"
           >
             <div class="backdrop-blur-xl rounded-3xl p-5 border border-main">
-              <h2 class="text-3xl">
+              <h2 class="text-3xl md:text-6xl">
                 The Auction House<br />Christmas specials!
               </h2>
-              <p class="text-xs">Themed auction until dec 28</p>
+              <p class="text-xs md:text-2xl">Themed auction until dec 28</p>
             </div>
           </div>
         </div>
       </section>
+
       <!-- POPULAR AUCTIONS -->
-      <section class="py-16">
+      <section class="py-16 border-b-2 border-b-main">
         <h2 class="font-julius text-center text-2xl">Popular auctions</h2>
         <!-- AUCTION CARD DIV -->
-        <div></div>
+        <!-- <div class="flex flex-wrap justify-around md:grid lg:grid-cols-4 py-14"> -->
+        <div class="grid grid-cols-2 md:grid lg:grid-cols-4 py-14">
+          <!-- CARD 1 -->
+          <div
+            class="h-64 w-44 lg:h-96 lg:w-64 overflow-hidden border border-main rounded-3xl shadow-xl my-5 mx-12 md:mx-5 place-self-center"
+          >
+            <!-- IMG DIV -->
+            <div class="pb-3">
+              <img
+                src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=658&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Auction picture"
+              />
+            </div>
+            <!-- TEXT/INFO DIV -->
+            <div class="px-3 flex flex-col justify-between">
+              <h3>Chair from *company*</h3>
+              <div class="flex justify-between py-5">
+                <p>20 bids</p>
+                <h4>1300NOK</h4>
+              </div>
+            </div>
+          </div>
+          <!-- CARD 2 -->
+          <div
+            class="h-64 w-44 lg:h-96 lg:w-64 overflow-hidden border border-main rounded-3xl shadow-xl my-5 mx-12 md:mx-5 place-self-center"
+          >
+            <!-- IMG DIV -->
+            <div class="pb-3">
+              <img
+                src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=658&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Auction picture"
+              />
+            </div>
+            <!-- TEXT/INFO DIV -->
+            <div class="px-3 flex flex-col justify-between">
+              <h3>Chair from *company*</h3>
+              <div class="flex justify-between py-5">
+                <p>20 bids</p>
+                <h4>1300NOK</h4>
+              </div>
+            </div>
+          </div>
+          <!-- CARD 3 -->
+          <div
+            class="h-64 w-44 lg:h-96 lg:w-64 overflow-hidden border border-main rounded-3xl shadow-xl my-5 mx-12 md:mx-5 place-self-center"
+          >
+            <!-- IMG DIV -->
+            <div class="pb-3">
+              <img
+                src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=658&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Auction picture"
+              />
+            </div>
+            <!-- TEXT/INFO DIV -->
+            <div class="px-3 flex flex-col justify-between">
+              <h3>Chair from *company*</h3>
+              <div class="flex justify-between py-5">
+                <p>20 bids</p>
+                <h4>1300NOK</h4>
+              </div>
+            </div>
+          </div>
+          <!-- CARD 4 -->
+          <div
+            class="h-64 w-44 lg:h-96 lg:w-64 overflow-hidden border border-main rounded-3xl shadow-xl my-5 mx-12 md:mx-5 place-self-center"
+          >
+            <!-- IMG DIV -->
+            <div class="pb-3">
+              <img
+                src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=658&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Auction picture"
+              />
+            </div>
+            <!-- TEXT/INFO DIV -->
+            <div class="px-3 flex flex-col justify-between">
+              <h3>Chair from *company*</h3>
+              <div class="flex justify-between py-5">
+                <p>20 bids</p>
+                <h4>1300NOK</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex justify-center py-5">
+          <button
+            class="border-2 border-main py-1 px-2 rounded-xl font-thin cursor-pointer shadow-xl md:text-2xl hover:bg-main hover:text-[#EEEDEA]"
+          >
+            Start bidding!
+          </button>
+        </div>
+      </section>
+      <!-- SOON ENDING AUCTIONS -->
+      <section class="py-16">
+        <h2 class="font-julius text-center text-2xl">Soon ending auctions</h2>
+        <!-- AUCTION CARD DIV -->
+        <!-- <div class="flex flex-wrap justify-around py-14"> -->
+        <div
+          class="md:grid md:grid-cols-3 md:self-center flex flex-wrap justify-around py-14"
+        >
+          <!-- CARD 1 -->
+          <div
+            class="h-64 w-44 md:h-96 md:w-64 overflow-hidden border border-main rounded-3xl shadow-xl my-5 mx-12 md:mx-5 md:place-self-center"
+          >
+            <!-- IMG DIV -->
+            <div class="pb-3">
+              <img
+                src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=658&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Auction picture"
+              />
+            </div>
+            <!-- TEXT/INFO DIV -->
+            <div class="px-3 flex flex-col justify-between">
+              <h3>Chair from *company*</h3>
+              <div class="flex justify-between py-5">
+                <p>20 bids</p>
+                <h4>1300NOK</h4>
+              </div>
+            </div>
+          </div>
+          <!-- CARD 2 -->
+          <div
+            class="h-64 w-44 md:h-96 md:w-64 overflow-hidden border border-main rounded-3xl shadow-xl my-5 mx-12 md:mx-5 md:place-self-center"
+          >
+            <!-- IMG DIV -->
+            <div class="pb-3">
+              <img
+                src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=658&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Auction picture"
+              />
+            </div>
+            <!-- TEXT/INFO DIV -->
+            <div class="px-3 flex flex-col justify-between">
+              <h3>Chair from *company*</h3>
+              <div class="flex justify-between py-5">
+                <p>20 bids</p>
+                <h4>1300NOK</h4>
+              </div>
+            </div>
+          </div>
+          <!-- CARD 3 -->
+          <div
+            class="h-64 w-44 md:h-96 md:w-64 overflow-hidden border border-main rounded-3xl shadow-xl my-5 mx-12 md:mx-5 md:place-self-center"
+          >
+            <!-- IMG DIV -->
+            <div class="pb-3">
+              <img
+                src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=658&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Auction picture"
+              />
+            </div>
+            <!-- TEXT/INFO DIV -->
+            <div class="px-3 flex flex-col justify-between">
+              <h3>Chair from *company*</h3>
+              <div class="flex justify-between py-5">
+                <p>20 bids</p>
+                <h4>1300NOK</h4>
+              </div>
+            </div>
+          </div>
+          <!-- CARD 4 -->
+          <div
+            class="h-64 w-44 md:h-96 md:w-64 overflow-hidden border border-main rounded-3xl shadow-xl my-5 mx-12 md:mx-5 md:place-self-center"
+          >
+            <!-- IMG DIV -->
+            <div class="pb-3">
+              <img
+                src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=658&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Auction picture"
+              />
+            </div>
+            <!-- TEXT/INFO DIV -->
+            <div class="px-3 flex flex-col justify-between">
+              <h3>Chair from *company*</h3>
+              <div class="flex justify-between py-5">
+                <p>20 bids</p>
+                <h4>1300NOK</h4>
+              </div>
+            </div>
+          </div>
+          <!-- CARD 5 -->
+          <div
+            class="h-64 w-44 md:h-96 md:w-64 overflow-hidden border border-main rounded-3xl shadow-xl my-5 mx-12 md:place-self-center"
+          >
+            <!-- IMG DIV -->
+            <div class="pb-3">
+              <img
+                src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=658&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Auction picture"
+              />
+            </div>
+            <!-- TEXT/INFO DIV -->
+            <div class="px-3 flex flex-col justify-between">
+              <h3>Chair from *company*</h3>
+              <div class="flex justify-between py-5">
+                <p>20 bids</p>
+                <h4>1300NOK</h4>
+              </div>
+            </div>
+          </div>
+          <!-- CARD 6 -->
+          <div
+            class="h-64 w-44 md:h-96 md:w-64 overflow-hidden border border-main rounded-3xl shadow-xl my-5 mx-12 md:place-self-center"
+          >
+            <!-- IMG DIV -->
+            <div class="pb-3">
+              <img
+                src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=658&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Auction picture"
+              />
+            </div>
+            <!-- TEXT/INFO DIV -->
+            <div class="px-3 flex flex-col justify-between">
+              <h3>Chair from *company*</h3>
+              <div class="flex justify-between py-5">
+                <p>20 bids</p>
+                <h4>1300NOK</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex justify-center py-5">
+          <button
+            class="border-2 border-main py-1 px-2 rounded-xl font-thin cursor-pointer shadow-xl md:text-2xl hover:bg-main hover:text-[#EEEDEA]"
+          >
+            Start bidding!
+          </button>
+        </div>
       </section>
     </main>
+    <footer
+      class="grid grid-cols-3 gap-4 border-t-2 border-t-main rounded-t-4xl py-5 px-5 bg-white"
+    >
+      <div class="border-r-3 border-r-main">
+        <img
+          class="h-24"
+          src="/img/logo auction house without background cropped.png"
+          alt="The auction house logo"
+        />
+        <h4 class="font-julius text-sm md:text-2xl">The Auction House</h4>
+      </div>
+      <div class="col-span-2 flex flex-col justify-between">
+        <div class="flex justify-between px-10 pb-10 md:text-xl">
+          <p class="cursor-pointer hover:underline">About us</p>
+          <p class="cursor-pointer hover:underline">Contact</p>
+          <p class="cursor-pointer hover:underline">Positions</p>
+          <p class="cursor-pointer hover:underline">FAQ</p>
+        </div>
+        <div class="flex flex-col items-baseline">
+          <p class="md:text-xl">Subscribe to our newsletter</p>
+          <input
+            class="md:text-xl border border-main rounded-md py-1 px-2 mb-3"
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Email..."
+          />
+          <button
+            class="md:text-xl border border-main rounded-md py-1 px-2 cursor-pointer hover:bg-main hover:text-white"
+            type="submit"
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+    </footer>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
   </body>
 </html>
