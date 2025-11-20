@@ -32,7 +32,7 @@ export function renderNavbar() {
           </a>
           <ion-icon id="menu-btn" class="text-main text-3xl cursor-pointer" name="menu-outline"></ion-icon>
       </div>
-      <div id="menu" class="absolute top-0 -right-96 border-2 border-main border-t-0 border-r-0 rounded-bl-3xl h-62 w-62 bg-white  transition-all duration-150"></div>
+      <div id="menu" class="absolute top-0 -right-96 border-2 border-main border-t-0 border-r-0 rounded-bl-3xl h-62 w-62 bg-white/30 backdrop-blur-3xl transition-all duration-150"></div>
     `;
   } else {
     // Logged out

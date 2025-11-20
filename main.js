@@ -9,12 +9,12 @@ localStorage.removeItem("user");
 localStorage.setItem(
   "user",
   JSON.stringify({
-    name: "Anders",
-    email: "anders@example.com",
+    name: "test",
+    email: "test@example.com",
   })
 );
 
 renderNavbar();
 initLoginModal();
 signupModal();
-// toggleMenu();
+toggleMenu();

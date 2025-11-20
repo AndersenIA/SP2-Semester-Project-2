@@ -3,6 +3,7 @@ export function toggleMenu() {
   const menu = document.getElementById("menu");
 
   menuBtn.addEventListener("click", function () {
+    console.log("menubtn clicked");
     menu.classList.toggle("right-0");
     menu.innerHTML = `
     <div class="py-3 px-3">
@@ -14,13 +15,13 @@ export function toggleMenu() {
         <a href="../profile/index.html"><p class="cursor-pointer hover:underline">Profile</p></a>
         <p class="cursor-pointer hover:underline">All auctions</p>
         <p class="cursor-pointer hover:underline">Add listing</p>
-        <button class="w-fit border border-main rounded-xl py-1 px-2 hover:bg-main hover:text-white mt-auto cursor-pointer">Log out</button>
+        <button class="w-fit border border-main rounded-xl py-1 px-2 hover:bg-main hover:text-white mt-auto ml-auto cursor-pointer">Log out</button>
       </div>
     </div>
     
     `;
-    const closeBtn = document.getElementById("close-menu-btn");
-    closeBtn.addEventListener("click", function () {
+    const menuCloseBtn = document.getElementById("close-menu-btn");
+    menuCloseBtn.addEventListener("click", function () {
       menu.classList.remove("right-0");
     });
   });
