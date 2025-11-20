@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/src/style.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=League+Spartan:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" src="../main.js"></script>
+  </head>
+  <body class="bg-[#EEEDEA] font-league font-thin overflow-x-hidden">
+    <nav
+      id="navbar"
+      class="bg-[#EEEDEA] flex justify-between items-center py-3 px-5 border-b-2 border-b-main sticky top-0 z-10"
+    ></nav>
+    <div class="py-3 flex justify-between px-5 border-b-2 border-b-main">
+      <button class="border-2 border-main rounded-xl py-1 px-3 cursor-pointer">
+        Filter
+      </button>
+      <input
+        class="border-2 border-main rounded-xl px-2"
+        type="search"
+        name="search"
+        id="search"
+        placeholder="Search..."
+      />
+    </div>
+    <!-- LOGIN/SIGN UP MODAL -->
+    <div
+      id="login-modal"
+      class="h-screen w-screen absolute top-0 z-20 backdrop-blur-xs justify-center py-20 hidden"
+    ></div>
+    <div
+      id="signup-modal"
+      class="h-screen w-screen absolute top-0 z-20 backdrop-blur-xs justify-center py-20 hidden"
+    ></div>
+    <main>
+      <div
+        class="flex justify-between items-center px-5 md:px-24 lg:px-80 py-10 border-b-2 border-main"
+      >
+        <div class="flex items-center p-2 border-2 border-main rounded-2xl">
+          <img
+            class="h-24 rounded-full border-2 border-main cursor-pointer mr-5"
+            src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=580&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="profile picture"
+          />
+          <div>
+            <h2 class="text-2xl">John Doe</h2>
+            <p>34 auctions joined</p>
+            <p>4 listings</p>
+          </div>
+        </div>
+        <div>
+          <p class="cursor-pointer hover:underline">Edit profile</p>
+          <p class="cursor-pointer hover:underline">Deposit</p>
+          <p class="cursor-pointer hover:underline">Create new listing</p>
+        </div>
+      </div>
+    </main>
+    <footer
+      class="grid grid-cols-3 gap-4 border-t-2 border-t-main rounded-t-4xl py-5 px-5 bg-white"
+    >
+      <div class="border-r-3 border-r-main">
+        <img
+          class="h-24"
+          src="/img/logo auction house without background cropped.png"
+          alt="The auction house logo"
+        />
+        <h4 class="font-julius text-sm md:text-2xl">The Auction House</h4>
+      </div>
+      <div class="col-span-2 flex flex-col justify-between">
+        <div class="flex justify-between px-10 pb-10 md:text-xl">
+          <p class="cursor-pointer hover:underline">About us</p>
+          <p class="cursor-pointer hover:underline">Contact</p>
+          <p class="cursor-pointer hover:underline">Positions</p>
+          <p class="cursor-pointer hover:underline">FAQ</p>
+        </div>
+        <div class="flex flex-col items-baseline">
+          <p class="md:text-xl">Subscribe to our newsletter</p>
+          <input
+            class="md:text-xl border border-main rounded-md py-1 px-2 mb-3"
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Email..."
+          />
+          <button
+            class="md:text-xl border border-main rounded-md py-1 px-2 cursor-pointer hover:bg-main hover:text-white"
+            type="submit"
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+    </footer>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>
