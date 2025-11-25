@@ -17,18 +17,7 @@
       id="navbar"
       class="bg-[#EEEDEA] flex justify-between items-center py-3 px-5 border-b-2 border-b-main sticky top-0 z-10"
     ></nav>
-    <div class="py-3 flex justify-between px-5 border-b-2 border-b-main">
-      <button class="border-2 border-main rounded-xl py-1 px-3 cursor-pointer">
-        Filter
-      </button>
-      <input
-        class="border-2 border-main rounded-xl px-2"
-        type="search"
-        name="search"
-        id="search"
-        placeholder="Search..."
-      />
-    </div>
+
     <!-- LOGIN/SIGN UP MODAL -->
     <div
       id="login-modal"
@@ -60,6 +49,96 @@
           <p class="cursor-pointer hover:underline">Create new listing</p>
         </div>
       </div>
+
+      <section class="py-16">
+        <h2 class="font-julius text-center text-2xl">Your listings</h2>
+        <!-- AUCTION CARD DIV -->
+
+        <div class="grid grid-cols-2 md:grid lg:grid-cols-4 py-14">
+          <!-- CARD 1 -->
+          <a href="/post/index.html">
+            <div
+              class="h-64 w-44 lg:h-96 lg:w-64 overflow-hidden border border-main rounded-3xl shadow-xl my-5 mx-12 md:mx-5 place-self-center transition-all duration-300 hover:-translate-y-5 hover:shadow-2xl cursor-pointer"
+            >
+              <!-- IMG DIV -->
+              <div class="pb-3">
+                <img
+                  src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=658&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  alt="Auction picture"
+                />
+              </div>
+              <!-- TEXT/INFO DIV -->
+              <div class="px-3 flex flex-col justify-between">
+                <h3>Chair from *company*</h3>
+                <div class="flex justify-between py-5">
+                  <p>20 bids</p>
+                  <h4>1300NOK</h4>
+                </div>
+              </div>
+            </div>
+          </a>
+          <!-- CARD 2 -->
+          <div
+            class="h-64 w-44 lg:h-96 lg:w-64 overflow-hidden border border-main rounded-3xl shadow-xl my-5 mx-12 md:mx-5 place-self-center transition-all duration-300 hover:-translate-y-5 hover:shadow-2xl cursor-pointer"
+          >
+            <!-- IMG DIV -->
+            <div class="pb-3">
+              <img
+                src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=658&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Auction picture"
+              />
+            </div>
+            <!-- TEXT/INFO DIV -->
+            <div class="px-3 flex flex-col justify-between">
+              <h3>Chair from *company*</h3>
+              <div class="flex justify-between py-5">
+                <p>20 bids</p>
+                <h4>1300NOK</h4>
+              </div>
+            </div>
+          </div>
+          <!-- CARD 3 -->
+          <div
+            class="h-64 w-44 lg:h-96 lg:w-64 overflow-hidden border border-main rounded-3xl shadow-xl my-5 mx-12 md:mx-5 place-self-center transition-all duration-300 hover:-translate-y-5 hover:shadow-2xl cursor-pointer"
+          >
+            <!-- IMG DIV -->
+            <div class="pb-3">
+              <img
+                src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=658&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Auction picture"
+              />
+            </div>
+            <!-- TEXT/INFO DIV -->
+            <div class="px-3 flex flex-col justify-between">
+              <h3>Chair from *company*</h3>
+              <div class="flex justify-between py-5">
+                <p>20 bids</p>
+                <h4>1300NOK</h4>
+              </div>
+            </div>
+          </div>
+          <!-- CARD 4 -->
+          <div
+            class="h-64 w-44 lg:h-96 lg:w-64 overflow-hidden border border-main rounded-3xl shadow-xl my-5 mx-12 md:mx-5 place-self-center transition-all duration-300 hover:-translate-y-5 hover:shadow-2xl cursor-pointer"
+          >
+            <!-- IMG DIV -->
+            <div class="pb-3">
+              <img
+                src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=658&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Auction picture"
+              />
+            </div>
+            <!-- TEXT/INFO DIV -->
+            <div class="px-3 flex flex-col justify-between">
+              <h3>Chair from *company*</h3>
+              <div class="flex justify-between py-5">
+                <p>20 bids</p>
+                <h4>1300NOK</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
     <footer
       class="grid grid-cols-3 gap-4 border-t-2 border-t-main rounded-t-4xl py-5 px-5 bg-white"
