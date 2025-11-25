@@ -7,3 +7,18 @@
   --font-julius: "Julius Sans One", sans-serif;
   --font-league: "League Spartan", sans-serif;
 }
+
+@layer utilities {
+  /* Chrome, Safari, Edge, Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* Firefox */
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  /* IE and Edge */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+  }
+}
