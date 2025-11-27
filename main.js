@@ -3,6 +3,7 @@ import { initLoginModal } from "./src/js/ui/modals/loginModal.js";
 import { toggleMenu } from "./src/js/ui/modals/menumodal.js";
 import { signupModal } from "./src/js/ui/modals/registermodal.js";
 import { openPostInfo } from "./src/js/ui/modals/postInfoModal.js";
+import { openBidModal } from "./src/js/ui/modals/bidModal.js";
 
 // Testing the navbar when I user is not logged in
 localStorage.removeItem("user");
@@ -20,3 +21,4 @@ initLoginModal();
 signupModal();
 toggleMenu();
 openPostInfo();
+openBidModal();
