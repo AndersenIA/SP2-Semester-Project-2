@@ -3,6 +3,7 @@ export function openPostInfo() {
   const mobileInfoDiv = document.getElementById("mobile-info-div");
   const postFullInfo = document.getElementById("post-full-info");
   const closeInfoBtn = document.getElementById("close-info-btn");
+  if (!openInfoBtn || !postFullInfo) return;
 
   function toggleClasses() {
     mobileInfoDiv.classList.toggle("hidden");

@@ -1,7 +1,13 @@
 export function getUser() {
   try {
-    return JSON.parse(localStorage.getItem("user"));
-  } catch {
+    const user = localStorage.getItem("user");
+    return user ? JSON.parse(user) : null;
+  } catch (error) {
+    console.error("Failed to parse user from localStorage:", error);
     return null;
   }
+}
+
+export function logout() {
+  localStorage.removeItem("user");
 }

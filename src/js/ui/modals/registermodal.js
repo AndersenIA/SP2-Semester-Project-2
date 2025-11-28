@@ -1,3 +1,5 @@
+import { registerUser } from "../../api/auth";
+
 export function signupModal() {
   const signupBtn = document.getElementById("signup-btn");
   const signupModal = document.getElementById("signup-modal");
@@ -35,27 +37,28 @@ export function signupModal() {
       </p>
       <div>
         <h2 class="font-julius px-5">Sign up</h2>
-        <form class="flex flex-col px-5 py-5" action="signup">
-        <label for="name">Account name</label>
+        <form id="register-form" class="flex flex-col px-5 py-5">
+          <label for="name">Account name</label>
           <input
             class="border border-main py-1 px-2 w-full mb-5 bg-gray-200 rounded-xl"
             type="name"
             name="name"
-            id="name"
+            id="register-name"
             placeholder="Account name..." />
           <label for="email">Email</label>
           <input
             class="border border-main py-1 px-2 w-full mb-5 bg-gray-200 rounded-xl"
             type="email"
             name="email"
-            id="email"
+            id="register-email"
             placeholder="Email..." />
           <label for="password">Password</label>
           <input
             class="border border-main py-1 px-2 w-full mb-16 bg-gray-200 rounded-xl"
             type="password"
             name="password"
-            id="password"
+            id="register-password"
+            minlength="8"
             placeholder="Password..." />
           <button
             class="border border-main py-1 px-2 w-fit self-center text-2xl rounded-xl hover:bg-main hover:text-white cursor-pointer"
@@ -82,6 +85,33 @@ export function signupModal() {
       loginModal.classList.remove("hidden");
       loginModal.classList.add("flex");
       document.body.classList.add("overflow-hidden");
+    }
+  });
+
+  // ✅ Hook the registration handler AFTER the form is added to the DOM
+  const registerForm = document.getElementById("register-form");
+  registerForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const userData = {
+      name: document.getElementById("register-name").value,
+      email: document.getElementById("register-email").value,
+      password: document.getElementById("register-password").value,
+      bio: "", // optional, add a field if you want
+      venueManager: false,
+    };
+
+    try {
+      const createdUser = await registerUser(userData);
+      console.log("User registered:", createdUser);
+      alert("Registration successful!");
+      signupModal.classList.add("hidden");
+      signupModal.classList.remove("flex");
+      document.body.classList.remove("overflow-hidden");
+      // optionally: store in localStorage or update navbar here
+      // localStorage.setItem("user", JSON.stringify(createdUser));
+    } catch (error) {
+      alert("Registration failed: " + error.message);
     }
   });
 }
