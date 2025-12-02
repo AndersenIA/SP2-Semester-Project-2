@@ -1,8 +1,8 @@
-const BASE_URL = "https://v2.api.noroff.dev"; // replace with your actual API base URL
+import { API, API_KEY } from "../../../config.js";
 
 export async function registerUser(userData) {
   try {
-    const res = await fetch(`${BASE_URL}/auth/register`, {
+    const res = await fetch(`${API}/auth/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -25,7 +25,7 @@ export async function registerUser(userData) {
 
 export async function loginUser({ email, password }) {
   try {
-    const res = await fetch(`${BASE_URL}/auth/login`, {
+    const res = await fetch(`${API}/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

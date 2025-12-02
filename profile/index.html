@@ -27,119 +27,22 @@
       id="signup-modal"
       class="h-screen w-screen absolute top-0 z-20 backdrop-blur-xs justify-center py-20 hidden"
     ></div>
-    <main>
-      <div
-        class="flex justify-between items-center px-5 md:px-24 lg:px-80 py-10 border-b-2 border-main"
-      >
-        <div class="flex items-center p-2 border-2 border-main rounded-2xl">
-          <img
-            class="h-24 rounded-full border-2 border-main cursor-pointer mr-5"
-            src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=580&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt="profile picture"
-          />
-          <div>
-            <h2 class="text-2xl">John Doe</h2>
-            <p>34 auctions joined</p>
-            <p>4 listings</p>
-          </div>
-        </div>
-        <div>
-          <p class="cursor-pointer hover:underline">Edit profile</p>
-          <p class="cursor-pointer hover:underline">Deposit</p>
-          <p class="cursor-pointer hover:underline">Create new listing</p>
-        </div>
-      </div>
+    <main id="profile-page">
+      <!-- PROFILE HEADER (JS fills this) -->
+      <div id="profile-info"></div>
 
+      <!-- USER LISTINGS -->
       <section class="py-16">
         <h2 class="font-julius text-center text-2xl">Your listings</h2>
-        <!-- AUCTION CARD DIV -->
 
-        <div class="grid grid-cols-2 md:grid lg:grid-cols-4 py-14">
-          <!-- CARD 1 -->
-          <a href="/post/index.html">
-            <div
-              class="h-64 w-44 lg:h-96 lg:w-64 overflow-hidden border border-main rounded-3xl shadow-xl my-5 mx-12 md:mx-5 place-self-center transition-all duration-300 hover:-translate-y-5 hover:shadow-2xl cursor-pointer"
-            >
-              <!-- IMG DIV -->
-              <div class="pb-3">
-                <img
-                  src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=658&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                  alt="Auction picture"
-                />
-              </div>
-              <!-- TEXT/INFO DIV -->
-              <div class="px-3 flex flex-col justify-between">
-                <h3>Chair from *company*</h3>
-                <div class="flex justify-between py-5">
-                  <p>20 bids</p>
-                  <h4>1300NOK</h4>
-                </div>
-              </div>
-            </div>
-          </a>
-          <!-- CARD 2 -->
-          <div
-            class="h-64 w-44 lg:h-96 lg:w-64 overflow-hidden border border-main rounded-3xl shadow-xl my-5 mx-12 md:mx-5 place-self-center transition-all duration-300 hover:-translate-y-5 hover:shadow-2xl cursor-pointer"
-          >
-            <!-- IMG DIV -->
-            <div class="pb-3">
-              <img
-                src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=658&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                alt="Auction picture"
-              />
-            </div>
-            <!-- TEXT/INFO DIV -->
-            <div class="px-3 flex flex-col justify-between">
-              <h3>Chair from *company*</h3>
-              <div class="flex justify-between py-5">
-                <p>20 bids</p>
-                <h4>1300NOK</h4>
-              </div>
-            </div>
-          </div>
-          <!-- CARD 3 -->
-          <div
-            class="h-64 w-44 lg:h-96 lg:w-64 overflow-hidden border border-main rounded-3xl shadow-xl my-5 mx-12 md:mx-5 place-self-center transition-all duration-300 hover:-translate-y-5 hover:shadow-2xl cursor-pointer"
-          >
-            <!-- IMG DIV -->
-            <div class="pb-3">
-              <img
-                src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=658&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                alt="Auction picture"
-              />
-            </div>
-            <!-- TEXT/INFO DIV -->
-            <div class="px-3 flex flex-col justify-between">
-              <h3>Chair from *company*</h3>
-              <div class="flex justify-between py-5">
-                <p>20 bids</p>
-                <h4>1300NOK</h4>
-              </div>
-            </div>
-          </div>
-          <!-- CARD 4 -->
-          <div
-            class="h-64 w-44 lg:h-96 lg:w-64 overflow-hidden border border-main rounded-3xl shadow-xl my-5 mx-12 md:mx-5 place-self-center transition-all duration-300 hover:-translate-y-5 hover:shadow-2xl cursor-pointer"
-          >
-            <!-- IMG DIV -->
-            <div class="pb-3">
-              <img
-                src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=658&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                alt="Auction picture"
-              />
-            </div>
-            <!-- TEXT/INFO DIV -->
-            <div class="px-3 flex flex-col justify-between">
-              <h3>Chair from *company*</h3>
-              <div class="flex justify-between py-5">
-                <p>20 bids</p>
-                <h4>1300NOK</h4>
-              </div>
-            </div>
-          </div>
-        </div>
+        <!-- JS will fill this -->
+        <div
+          id="profile-listings"
+          class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 py-14 px-5 md:px-24 lg:px-80"
+        ></div>
       </section>
     </main>
+
     <footer
       class="grid grid-cols-3 gap-4 border-t-2 border-t-main rounded-t-4xl py-5 px-5 bg-white"
     >

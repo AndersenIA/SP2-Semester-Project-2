@@ -1,5 +1,4 @@
-import { loginUser } from "../../api/auth";
-import { initUI } from "../initUI";
+import { loginUser } from "../../api/auth.js";
 
 export function initLoginModal() {
   const loginBtn = document.getElementById("login-btn");
@@ -56,16 +55,24 @@ export function initLoginModal() {
       const user = await loginUser(credentials);
       localStorage.setItem("user", JSON.stringify(user));
 
-      // 1️⃣ Re-render navbar and re-bind listeners
-      initUI(); // this reruns renderNavbar, toggleMenu, initLoginModal
+      // ✅ Re-render only the navbar
+      const { renderNavbar } = await import("../navbar.js");
+      renderNavbar();
 
       // 2️⃣ Close modal
       const loginModal = document.getElementById("login-modal");
       loginModal.classList.add("hidden");
       loginModal.classList.remove("flex");
       document.body.classList.remove("overflow-hidden");
+
+      // ✅ Refresh profile page if we are on it
+      if (window.location.pathname.includes("profile/index.html")) {
+        const { initProfilePage } = await import("../profile.js");
+        initProfilePage();
+      }
     } catch (error) {
       alert("Login failed: " + error.message);
+      console.error("Login error:", error);
     }
   });
 }
