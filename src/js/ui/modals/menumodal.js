@@ -19,7 +19,7 @@ export function toggleMenu() {
         <div class="flex flex-col h-40">
           <a href="../profile/index.html"><p class="cursor-pointer hover:underline">Profile</p></a>
           <p class="cursor-pointer hover:underline">All auctions</p>
-          <p class="cursor-pointer hover:underline">Add listing</p>
+          <p id="create-listing-menu-btn" class="cursor-pointer hover:underline">Create listing</p>
           <button id="logout-btn" class="w-fit border border-main rounded-xl py-1 px-2 hover:bg-main hover:text-white mt-auto ml-auto cursor-pointer">Log out</button>
         </div>
       </div>

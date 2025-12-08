@@ -1,41 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="/src/style.css" rel="stylesheet" />
+    <title>Listing | The Auction House</title>
+
+    <!-- CSS -->
+    <link href="../src/style.css" rel="stylesheet" />
+
+    <!-- GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=League+Spartan:wght@100..900&display=swap"
       rel="stylesheet"
     />
+
+    <!-- MAIN JS -->
     <script type="module" src="../main.js"></script>
   </head>
+
   <body class="bg-[#EEEDEA] font-league font-thin overflow-x-hidden">
+    <!-- NAVBAR -->
     <nav
       id="navbar"
       class="bg-[#EEEDEA] flex justify-between items-center py-3 px-5 border-b-2 border-b-main sticky top-0 z-10"
     ></nav>
 
-    <!-- LOGIN/SIGN UP MODAL -->
+    <!-- LOGIN / SIGNUP MODALS -->
     <div
       id="login-modal"
       class="h-screen w-screen absolute top-0 z-20 backdrop-blur-xs justify-center py-20 hidden"
     ></div>
+
     <div
       id="signup-modal"
       class="h-screen w-screen absolute top-0 z-20 backdrop-blur-xs justify-center py-20 hidden"
     ></div>
+
+    <!-- MAIN SECTION -->
     <main class="2xl:flex 2xl:items-center">
       <div class="flex my-10 px-5">
+        <!-- MAIN IMAGE -->
         <div class="border-2 border-main overflow-hidden rounded-2xl">
           <img
+            id="listing-main-image"
             class="object-cover size-96 lg:size-192"
-            src="https://plus.unsplash.com/premium_photo-1678074057896-eee996d4a23e?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt=""
+            src=""
+            alt="Listing image"
           />
         </div>
+
+        <!-- MOBILE INFO BUTTON -->
         <div
           id="mobile-info-div"
           class="border-2 border-main border-r-0 rounded-bl-2xl rounded-tl-2xl right-0 bg-white md:hidden fixed"
@@ -47,37 +63,44 @@
                 class="text-main text-3xl cursor-pointer"
                 name="menu-outline"
               ></ion-icon>
+
               <img
+                id="mobile-avatar"
                 class="h-10 rounded-full border-2 border-main cursor-pointer"
-                src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=580&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                src=""
                 alt="profile picture"
               />
             </div>
-            <h2>140EUR</h2>
+            <h2 id="mobile-price">0 EUR</h2>
           </div>
         </div>
+
+        <!-- RIGHT INFO PANEL -->
         <div
           id="post-full-info"
-          class="fixed 2xl:absolute p-5 border-2 border-r-0 border-main rounded-bl-2xl rounded-tl-2xl -right-96 transition-all duration-300 md:right-0 bg-white"
+          class="fixed 2xl:absolute p-5 border-2 border-r-0 border-main rounded-bl-2xl rounded-tl-2xl -right-110 transition-all duration-300 md:right-0 bg-white"
         >
-          <div class="flex flex-col justify-between">
+          <div class="flex flex-col justify-between h-full">
+            <!-- SELLER INFO -->
             <div>
               <div class="flex justify-between">
                 <div class="flex p-2 border-2 border-main rounded-2xl">
-                  <a href="/profile/index.html">
+                  <a id="seller-profile-link" href="#">
                     <img
+                      id="seller-avatar"
                       class="h-24 rounded-full border-2 border-main cursor-pointer mr-5"
-                      src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=580&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                      src=""
                       alt="profile picture"
                     />
                   </a>
 
                   <div>
-                    <h2 class="text-2xl">John Doe</h2>
-                    <p>34 auctions joined</p>
-                    <p>4 listings</p>
+                    <h2 id="seller-name" class="text-2xl"></h2>
+                    <p id="seller-auctions">0 auctions joined</p>
+                    <p id="seller-listings">0 listings</p>
                   </div>
                 </div>
+
                 <ion-icon
                   id="close-info-btn"
                   class="text-2xl cursor-pointer md:hidden pl-10"
@@ -85,81 +108,60 @@
                 ></ion-icon>
               </div>
             </div>
+
+            <!-- TITLE / PRICE / TIME -->
             <div class="pt-5">
-              <h2>Chair from "company"</h2>
+              <h2 id="listing-title" class="text-2xl 2xl:text-3xl"></h2>
+
               <div>
-                <p class="text-red-500">2 minutes remaining</p>
-                <h2 class="text-2xl">140EUR</h2>
+                <p id="listing-remaining" class="text-red-500"></p>
+                <h2 id="listing-price" class="text-2xl"></h2>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      <!-- RIGHT SIDE CONTENT -->
       <div class="flex flex-col">
+        <!-- TITLE & PRICE (REPEAT FOR LAYOUT) -->
         <div>
           <div class="px-5">
-            <h2 class="text-2xl 2xl:text-3xl">Chair from "company"</h2>
+            <h2 id="title-duplicate" class="text-2xl 2xl:text-3xl"></h2>
             <div>
-              <p class="2xl:text-4xl py-2">140Euro</p>
-              <p class="text-red-500 2xl:text-xl">2 minutes remaining</p>
+              <p id="price-duplicate" class="2xl:text-4xl py-2"></p>
+              <p id="time-duplicate" class="text-red-500 2xl:text-xl"></p>
             </div>
           </div>
         </div>
+
+        <!-- BID HISTORY -->
         <div class="flex flex-col px-5">
-          <!-- outer wrapper — relative and NOT scrollable -->
           <div
             class="relative bg-white border-2 border-main rounded-t-2xl my-10 w-sm md:w-3xl"
           >
-            <!-- HEADER — not part of the scroll area -->
             <div class="flex justify-between border-b border-main px-3 py-3">
               <h2>Current bid</h2>
-              <p>140EUR</p>
+              <p id="current-bid">0 EUR</p>
             </div>
 
-            <!-- SCROLL AREA — fixed height, this is the thing that scrolls -->
-            <div class="h-32 overflow-y-auto no-scrollbar">
-              <!-- lots of items to force scrolling -->
-              <div class="flex justify-between px-3 py-1">
-                <h2>*Account name*</h2>
-                <p>140EUR</p>
-              </div>
-              <div class="flex justify-between px-3 py-1">
-                <h2>*Account name*</h2>
-                <p>140EUR</p>
-              </div>
-              <div class="flex justify-between px-3 py-1">
-                <h2>*Account name*</h2>
-                <p>140EUR</p>
-              </div>
-              <div class="flex justify-between px-3 py-1">
-                <h2>*Account name*</h2>
-                <p>140EUR</p>
-              </div>
-              <div class="flex justify-between px-3 py-1">
-                <h2>*Account name*</h2>
-                <p>140EUR</p>
-              </div>
-              <div class="flex justify-between px-3 py-1">
-                <h2>*Account name*</h2>
-                <p>140EUR</p>
-              </div>
-              <div class="flex justify-between px-3 py-1">
-                <h2>*Account name*</h2>
-                <p>140EUR</p>
-              </div>
+            <div id="bid-history" class="h-32 overflow-y-auto no-scrollbar">
+              <!-- JS will insert bids here -->
             </div>
 
-            <!-- STATIC OVERLAY — absolute relative to outer wrapper -->
             <div
               class="pointer-events-none absolute bottom-0 left-0 right-0 h-24 bg-linear-to-t from-white to-transparent"
             ></div>
           </div>
+
+          <!-- PLACE BID BUTTON -->
           <button
             id="place-bid-btn"
             class="mb-5 border-2 border-main rounded-2xl w-fit h-fit py-1 px-2 hover:bg-main hover:text-white cursor-pointer md:text-2xl"
           >
             Place bid
           </button>
+
           <div
             id="bid-modal"
             class="h-screen w-screen absolute top-0 z-20 backdrop-blur-xs justify-center py-20 hidden"
@@ -167,6 +169,8 @@
         </div>
       </div>
     </main>
+
+    <!-- FOOTER -->
     <footer
       class="grid grid-cols-3 gap-4 border-t-2 border-t-main rounded-t-4xl py-5 px-5 bg-white"
     >
@@ -178,6 +182,7 @@
         />
         <h4 class="font-julius text-sm md:text-2xl">The Auction House</h4>
       </div>
+
       <div class="col-span-2 flex flex-col justify-between">
         <div class="flex justify-between px-10 pb-10 md:text-xl">
           <p class="cursor-pointer hover:underline">About us</p>
@@ -185,6 +190,7 @@
           <p class="cursor-pointer hover:underline">Positions</p>
           <p class="cursor-pointer hover:underline">FAQ</p>
         </div>
+
         <div class="flex flex-col items-baseline">
           <p class="md:text-xl">Subscribe to our newsletter</p>
           <input
@@ -196,13 +202,14 @@
           />
           <button
             class="md:text-xl border border-main rounded-md py-1 px-2 cursor-pointer hover:bg-main hover:text-white"
-            type="submit"
           >
             Submit
           </button>
         </div>
       </div>
     </footer>
+
+    <!-- ION ICONS -->
     <script
       type="module"
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
@@ -211,5 +218,8 @@
       nomodule
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
     ></script>
+
+    <!-- JS THAT FILLS THE LISTING -->
+    <script type="module" src="../src/js/ui/singleListing.js"></script>
   </body>
 </html>

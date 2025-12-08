@@ -15,3 +15,11 @@ export async function loadFeed() {
     console.error(error);
   }
 }
+
+document.addEventListener("click", (e) => {
+  const card = e.target.closest("[data-id]");
+  if (!card) return;
+
+  const id = card.dataset.id;
+  window.location.href = `/post/index.html?id=${id}`;
+});
