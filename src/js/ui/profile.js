@@ -6,9 +6,6 @@ export async function initProfilePage() {
   const profileId = params.get("id"); // ID from URL
   const loggedInUser = getUser();
 
-  console.log("Profile ID from URL:", profileId);
-  console.log("Logged-in user:", loggedInUser);
-
   if (!loggedInUser) {
     console.warn("No logged-in user. Cannot view profiles.");
     renderLoggedOutProfile();
@@ -23,15 +20,14 @@ export async function initProfilePage() {
   };
 
   if (profileId) {
-    url = `${API}/auction/profiles/${profileId}?_listings=true&_wins=true`;
+    url = `${API}/auction/profiles/${profileId}?_listings=true&_wins=true&_bids=true`;
     if (profileId === loggedInUser.name) isOwnProfile = true;
   } else {
-    url = `${API}/auction/profiles/${loggedInUser.name}?_listings=true&_wins=true`;
+    url = `${API}/auction/profiles/${loggedInUser.name}?_listings=true&_wins=true&_bids=true`;
     isOwnProfile = true;
   }
 
   try {
-    console.log("Fetching profile from:", url);
     const response = await fetch(url, { headers });
 
     if (!response.ok) {
@@ -50,8 +46,6 @@ export async function initProfilePage() {
       renderLoggedOutProfile();
       return;
     }
-
-    console.log("Profile data received:", data);
 
     renderProfileInfo(data, isOwnProfile);
     renderUserListings(data.listings || []);
@@ -96,7 +90,7 @@ function renderProfileInfo(profile, isOwnProfile = false) {
   `;
 }
 
-function renderUserListings(listings) {
+async function renderUserListings(listings) {
   const container = document.getElementById("profile-listings");
   if (!container) return;
 
@@ -105,41 +99,48 @@ function renderUserListings(listings) {
     return;
   }
 
-  container.innerHTML = listings
-    .map((listing) => {
-      const now = new Date();
-      const endsAt = new Date(listing.endsAt);
-      const diff = endsAt - now;
-      const remaining =
-        diff > 0
-          ? `${Math.floor(diff / (1000 * 60 * 60))}h ${Math.floor(
-              (diff / (1000 * 60)) % 60
-            )}m left`
-          : "Expired";
+  container.innerHTML = ""; // clear container
 
-      return `
-        <div data-id="${listing.id}"
-          class="listing-card h-64 w-44 lg:h-96 lg:w-64 overflow-hidden border border-main rounded-3xl shadow-xl my-5 mx-12 md:mx-5 place-self-center transition-all duration-300 hover:-translate-y-5 hover:shadow-2xl cursor-pointer grid grid-rows-2"
-        >
-          <div class="pb-3 overflow-hidden">
-            <img
-              src="${
-                listing.media?.[0]?.url || "./public/img/Placeholder-img.png"
-              }"
-              alt="${listing.media?.[0]?.alt || listing.title}"
-            />
-          </div>
-          <div class="px-3 pt-5 flex flex-col justify-between">
-            <h3 class="text-2xl">${listing.title}</h3>
-            <div class="flex justify-between py-5">
-              <p>Bids: ${listing._count?.bids || 0}</p>
-              <h4>${remaining}</h4>
-            </div>
+  for (const listing of listings) {
+    // Fetch full listing to get accurate bid count
+    const res = await fetch(`${API}/auction/listings/${listing.id}?_bids=true`);
+    const listingData = await res.json();
+    const fullListing = listingData.data;
+
+    const now = new Date();
+    const endsAt = new Date(fullListing.endsAt);
+    const diff = endsAt - now;
+    const remaining =
+      diff > 0
+        ? `${Math.floor(diff / (1000 * 60 * 60))}h ${Math.floor(
+            (diff / (1000 * 60)) % 60
+          )}m left`
+        : "Expired";
+
+    container.innerHTML += `
+      <div data-id="${fullListing.id}"
+        class="listing-card h-64 w-44 lg:h-96 lg:w-64 overflow-hidden border border-main rounded-3xl shadow-xl my-5 mx-12 md:mx-5 cursor-pointer grid grid-rows-2"
+      >
+        <div class="pb-3 overflow-hidden">
+          <img
+            src="${
+              fullListing.media?.[0]?.url || "./public/img/Placeholder-img.png"
+            }"
+            alt="${fullListing.media?.[0]?.alt || fullListing.title}"
+          />
+        </div>
+        <div class="px-3 pt-1 lg:pt-5 flex flex-col justify-between">
+          <h3 class="lg:text-2xl">${fullListing.title}</h3>
+          <div class="flex justify-between py-5">
+            <p>Bids: ${fullListing._count?.bids || 0}</p>
+            <h4>${remaining}</h4>
           </div>
         </div>
-      `;
-    })
-    .join("");
+      </div>
+    `;
+  }
+
+  enableListingClicks();
 }
 
 function renderLoggedOutProfile() {

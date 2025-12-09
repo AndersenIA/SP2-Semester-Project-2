@@ -6,8 +6,6 @@ export async function loadFeed() {
   try {
     const listings = await getAllListings();
 
-    console.log("Listings loaded:", listings); // <— put BEFORE render
-
     // Call your existing feed renderer
     renderFeedItems(listings);
     renderPopularItems(listings);
