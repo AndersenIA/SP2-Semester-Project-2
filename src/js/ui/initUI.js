@@ -8,6 +8,7 @@ import { openBidModal } from "./modals/bidModal.js";
 // import { CreateListingModal } from "./modals/createListingModal.js";
 import { initAllListingsPage } from "./initAllListingsPage.js";
 import { toggleFilterMenu } from "./modals/filterMenu.js";
+import { setupStartBiddingButtons } from "./feed.js";
 
 export function initUI() {
   renderNavbar();
@@ -25,4 +26,8 @@ export function initUI() {
       toggleFilterMenu();
     });
   }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    setupStartBiddingButtons();
+  });
 }

@@ -52,6 +52,7 @@ export async function initProfilePage() {
     renderProfileInfo(data, isOwnProfile);
     attachCreateListingButton(); // Attach modal to profile button
     attachEditProfileButton(data);
+    attachDepositButton();
     await renderUserListings(data.listings || []);
     enableListingClicks();
   } catch (error) {
@@ -103,6 +104,19 @@ function renderProfileInfo(profile, isOwnProfile = false) {
       </div>
     </div>
   `;
+}
+
+// Attach Deposit button alert
+function attachDepositButton() {
+  const depositBtn = Array.from(document.querySelectorAll("p")).find(
+    (el) => el.textContent.trim() === "Deposit"
+  );
+
+  if (!depositBtn) return;
+
+  depositBtn.addEventListener("click", () => {
+    alert("Deposit functionality is not implemented yet. Stay tuned!");
+  });
 }
 
 // Attach Create Listing modal to the profile button

@@ -18,7 +18,10 @@
       class="bg-[#EEEDEA] flex justify-between items-center py-3 px-5 border-b-2 border-b-main sticky top-0 z-10"
     ></nav>
     <div class="py-3 flex justify-between px-5 border-b-2 border-b-main">
-      <button class="border-2 border-main rounded-xl py-1 px-3 cursor-pointer">
+      <button
+        id="filter-btn"
+        class="filter-btn border-2 border-main rounded-xl py-1 px-3 cursor-pointer"
+      >
         Filter
       </button>
       <input
@@ -29,6 +32,11 @@
         placeholder="Search..."
       />
     </div>
+    <!-- Filter menu -->
+    <div
+      id="filter-menu"
+      class="absolute -left-96 top-22 border-2 border-main border-l-0 rounded-br-3xl h-120 w-62 bg-white/30 backdrop-blur-3xl transition-all duration-150 overflow-x-scroll no-scrollbar z-100"
+    ></div>
     <!-- LOGIN/SIGN UP MODAL -->
     <div
       id="login-modal"
@@ -80,7 +88,7 @@
         ></div>
         <div class="flex justify-center py-5">
           <button
-            class="border-2 border-main py-1 px-2 rounded-xl font-thin cursor-pointer shadow-xl md:text-2xl hover:bg-main hover:text-[#EEEDEA]"
+            class="start-bidding-btn border-2 border-main py-1 px-2 rounded-xl font-thin cursor-pointer shadow-xl md:text-2xl hover:bg-main hover:text-[#EEEDEA]"
           >
             Start bidding!
           </button>
@@ -96,7 +104,7 @@
         ></div>
         <div class="flex justify-center py-5">
           <button
-            class="border-2 border-main py-1 px-2 rounded-xl font-thin cursor-pointer shadow-xl md:text-2xl hover:bg-main hover:text-[#EEEDEA]"
+            class="start-bidding-btn border-2 border-main py-1 px-2 rounded-xl font-thin cursor-pointer shadow-xl md:text-2xl hover:bg-main hover:text-[#EEEDEA]"
           >
             Start bidding!
           </button>

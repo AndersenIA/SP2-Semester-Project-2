@@ -20,7 +20,7 @@
     <div class="py-3 flex justify-between px-5 border-b-2 border-b-main">
       <button
         id="filter-btn"
-        class="border-2 border-main rounded-xl py-1 px-3 cursor-pointer"
+        class="filter-btn border-2 border-main rounded-xl py-1 px-3 cursor-pointer"
       >
         Filter
       </button>
@@ -98,5 +98,9 @@
       nomodule
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
     ></script>
+    <script type="module">
+      import { initListingsPage } from "../src/js/ui/listingsPage.js";
+      initListingsPage();
+    </script>
   </body>
 </html>
