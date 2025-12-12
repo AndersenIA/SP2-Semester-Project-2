@@ -1,6 +1,7 @@
 import { getUser } from "../utils/storage.js";
 import { API, API_KEY } from "../../../config.js";
 import { CreateListingModal } from "./modals/createListingModal.js";
+import { EditProfileModal } from "./modals/editProfileModal.js";
 
 export async function initProfilePage() {
   const params = new URLSearchParams(window.location.search);
@@ -50,6 +51,7 @@ export async function initProfilePage() {
 
     renderProfileInfo(data, isOwnProfile);
     attachCreateListingButton(); // Attach modal to profile button
+    attachEditProfileButton(data);
     await renderUserListings(data.listings || []);
     enableListingClicks();
   } catch (error) {
@@ -66,28 +68,38 @@ function renderProfileInfo(profile, isOwnProfile = false) {
   if (!container) return;
 
   container.innerHTML = `
-    <div class="flex justify-between items-center px-5 md:px-24 lg:px-80 py-10 border-b-2 border-main">
-      <div class="flex items-center p-2 border-2 border-main rounded-2xl">
-        <img
-          class="h-24 rounded-full border-2 border-main cursor-pointer mr-5"
-          src="${profile.avatar?.url || "/img/default-avatar.jpg"}"
-          alt="${profile.avatar?.alt || profile.name}"
-        />
+    <div class="flex flex-col px-5 md:px-24 lg:px-80 py-10 border-b-2 border-main">
+      <div class="flex justify-between items-center">
+        <div class="flex items-center p-2 border-2 border-main rounded-2xl">
+          <img
+            class="h-24 rounded-full border-2 border-main cursor-pointer mr-5"
+            src="${profile.avatar?.url || "/img/default-avatar.jpg"}"
+            alt="${profile.avatar?.alt || profile.name}"
+          />
+          <div>
+            <h2 class="text-2xl">${profile.name}</h2>
+            <p>${profile._count?.wins || 0} auctions won</p>
+            <p>${profile._count?.listings || 0} listings</p>
+          </div>
+        </div>
+
         <div>
-          <h2 class="text-2xl">${profile.name}</h2>
-          <p>${profile._count?.wins || 0} auctions won</p>
-          <p>${profile._count?.listings || 0} listings</p>
+          ${
+            isOwnProfile
+              ? `<p id="edit_profile_btn" class="cursor-pointer hover:underline">Edit profile</p>
+                 <p class="cursor-pointer hover:underline">Deposit</p>
+                 <p id="create-listing-profile-btn" class="cursor-pointer hover:underline">Create new listing</p>`
+              : ""
+          }
         </div>
       </div>
 
-      <div>
-        ${
-          isOwnProfile
-            ? `<p class="cursor-pointer hover:underline">Edit profile</p>
-               <p class="cursor-pointer hover:underline">Deposit</p>
-               <p id="create-listing-profile-btn" class="cursor-pointer hover:underline">Create new listing</p>`
-            : ""
-        }
+      <!-- Bio Section -->
+      <div class="mt-5 px-3">
+        <h3 class="text-lg text-2xl">Bio:</h3>
+        <p id="profile-bio" class="text-base text-sm">${
+          profile.bio || "This user has no bio."
+        }</p>
       </div>
     </div>
   `;
@@ -100,6 +112,16 @@ function attachCreateListingButton() {
 
   btn.addEventListener("click", () => {
     CreateListingModal();
+  });
+}
+
+// Attach Edit Profile button
+function attachEditProfileButton(profile) {
+  const btn = document.getElementById("edit_profile_btn");
+  if (!btn) return;
+
+  btn.addEventListener("click", () => {
+    EditProfileModal(profile);
   });
 }
 

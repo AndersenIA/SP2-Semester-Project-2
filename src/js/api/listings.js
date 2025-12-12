@@ -3,7 +3,22 @@ import { getUser } from "../utils/storage.js";
 
 // Public: fetch all listings (only future listings)
 export async function getAllListings() {
-  const res = await fetch(`${API}/auction/listings`);
+  const user = getUser();
+
+  const headers = user
+    ? {
+        Authorization: `Bearer ${user.accessToken}`,
+        "X-Noroff-API-Key": API_KEY,
+      }
+    : {
+        "X-Noroff-API-Key": API_KEY,
+      };
+
+  const url = user
+    ? `${API}/auction/listings?_seller=true&_bids=true&_active=true`
+    : `${API}/auction/listings?_bids=true&_active=true`;
+
+  const res = await fetch(url, { headers });
 
   if (!res.ok) {
     throw new Error("Failed to fetch listings");
