@@ -97,8 +97,7 @@ function renderProfileInfo(profile, isOwnProfile = false) {
 
       <!-- Bio Section -->
       <div class="mt-5 px-3">
-        <h3 class="text-lg text-2xl">Bio:</h3>
-        <p id="profile-bio" class="text-base text-sm">${
+        <p id="profile-bio" class="text-xl">${
           profile.bio || "This user has no bio."
         }</p>
       </div>
