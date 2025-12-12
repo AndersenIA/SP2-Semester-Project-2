@@ -14,5 +14,4 @@ export function initUI() {
   signupModal();
   openPostInfo();
   openBidModal();
-  CreateListingModal();
 }

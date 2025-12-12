@@ -1,5 +1,6 @@
 import { getUser } from "../utils/storage.js";
 import { API, API_KEY } from "../../../config.js";
+import { CreateListingModal } from "./modals/createListingModal.js";
 
 export async function initProfilePage() {
   const params = new URLSearchParams(window.location.search);
@@ -48,7 +49,8 @@ export async function initProfilePage() {
     }
 
     renderProfileInfo(data, isOwnProfile);
-    renderUserListings(data.listings || []);
+    attachCreateListingButton(); // Attach modal to profile button
+    await renderUserListings(data.listings || []);
     enableListingClicks();
   } catch (error) {
     console.error("Error loading profile:", error);
@@ -56,6 +58,7 @@ export async function initProfilePage() {
   }
 }
 
+// Render profile info
 function renderProfileInfo(profile, isOwnProfile = false) {
   const container =
     document.getElementById("profile-info") ||
@@ -90,6 +93,17 @@ function renderProfileInfo(profile, isOwnProfile = false) {
   `;
 }
 
+// Attach Create Listing modal to the profile button
+function attachCreateListingButton() {
+  const btn = document.getElementById("create-listing-profile-btn");
+  if (!btn) return;
+
+  btn.addEventListener("click", () => {
+    CreateListingModal();
+  });
+}
+
+// Render user listings
 async function renderUserListings(listings) {
   const container = document.getElementById("profile-listings");
   if (!container) return;
@@ -139,10 +153,9 @@ async function renderUserListings(listings) {
       </div>
     `;
   }
-
-  enableListingClicks();
 }
 
+// Render fallback if not logged in
 function renderLoggedOutProfile() {
   const container =
     document.getElementById("profile-info") ||
@@ -157,6 +170,7 @@ function renderLoggedOutProfile() {
   if (listingsContainer) listingsContainer.innerHTML = "";
 }
 
+// Enable clicks on listing cards
 function enableListingClicks() {
   document.querySelectorAll(".listing-card").forEach((card) => {
     card.addEventListener("click", () => {

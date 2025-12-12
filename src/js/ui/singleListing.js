@@ -1,11 +1,14 @@
 import { API } from "../../../config";
 import { openBidModal } from "./modals/bidModal";
+import { getUser } from "../utils/storage";
+import { openEditListingModal } from "./modals/editListingModal";
 
 // Wait for DOM to be ready
 document.addEventListener("DOMContentLoaded", async () => {
   // Get listing ID from URL
   const params = new URLSearchParams(window.location.search);
   const id = params.get("id");
+  const loggedInUser = getUser();
 
   if (!id) {
     console.error("Missing listing ID");
@@ -17,6 +20,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   const title = document.getElementById("listing-title");
   const remaining = document.getElementById("listing-remaining");
   const price = document.getElementById("listing-price");
+  const mainTitle = document.getElementById("listing-main-title");
+  const mainDesc = document.getElementById("listing-main-desc");
+  const mainTags = document.getElementById("listing-main-tags");
 
   const sellerAvatar = document.getElementById("seller-avatar");
   const sellerName = document.getElementById("seller-name");
@@ -33,9 +39,37 @@ document.addEventListener("DOMContentLoaded", async () => {
     );
     const { data } = await res.json();
 
+    const placeBidBtn = document.getElementById("place-bid-btn");
+
+    // If user owns this listing → show EDIT instead
+    if (loggedInUser && loggedInUser.name === data.seller.name) {
+      placeBidBtn.textContent = "Edit listing";
+
+      // Remove bid modal click (if added)
+      placeBidBtn.replaceWith(placeBidBtn.cloneNode(true));
+      const editBtn = document.getElementById("place-bid-btn");
+
+      editBtn.addEventListener("click", () => {
+        openEditListingModal(data);
+      });
+    } else {
+      // Normal bid button behaviour
+      placeBidBtn.addEventListener("click", () => openBidModal(id));
+    }
+
     // Fill listing info
     title.textContent = data.title;
     image.src = data.media?.[0]?.url || "/public/img/Placeholder-img.png";
+
+    // Main info under image
+    mainTitle.textContent = data.title;
+    mainDesc.textContent = data.description || "No description provided.";
+
+    if (data.tags && data.tags.length > 0) {
+      mainTags.textContent = data.tags.join(", ");
+    } else {
+      mainTags.textContent = "No tags";
+    }
 
     const now = new Date();
     const ends = new Date(data.endsAt);

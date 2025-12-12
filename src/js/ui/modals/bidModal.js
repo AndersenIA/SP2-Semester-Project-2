@@ -3,7 +3,7 @@ import { getUser } from "../../utils/storage";
 
 export function openBidModal(listingId) {
   if (!listingId) {
-    console.error("No listing ID provided to modal");
+    // console.error("No listing ID provided to modal");
     return;
   }
 

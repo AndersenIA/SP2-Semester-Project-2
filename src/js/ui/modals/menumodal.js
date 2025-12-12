@@ -1,5 +1,6 @@
-import { logout } from "../../utils/storage";
-import { initUI } from "../initUI";
+import { logout } from "../../utils/storage.js";
+import { initUI } from "../initUI.js";
+import { CreateListingModal } from "./createListingModal.js";
 
 export function toggleMenu() {
   const menuBtn = document.getElementById("menu-btn");
@@ -7,9 +8,8 @@ export function toggleMenu() {
 
   if (!menuBtn || !menu) return;
 
-  menuBtn.addEventListener("click", () => {
-    menu.classList.toggle("right-0");
-
+  // Inject menu HTML only if empty
+  if (!menu.innerHTML.trim()) {
     menu.innerHTML = `
       <div class="py-3 px-3">
         <div class="flex items-center justify-between pb-5">
@@ -24,17 +24,28 @@ export function toggleMenu() {
         </div>
       </div>
     `;
+  }
 
-    // Close menu
-    document.getElementById("close-menu-btn").addEventListener("click", () => {
-      menu.classList.remove("right-0");
-    });
+  const closeBtn = document.getElementById("close-menu-btn");
+  const logoutBtn = document.getElementById("logout-btn");
+  const createBtn = document.getElementById("create-listing-menu-btn");
 
-    // Logout button
-    document.getElementById("logout-btn").addEventListener("click", () => {
-      logout();
-      initUI();
-      menu.classList.remove("right-0");
-    });
+  // Toggle menu
+  menuBtn.addEventListener("click", () => menu.classList.toggle("right-0"));
+  closeBtn.addEventListener("click", () => menu.classList.remove("right-0"));
+
+  // Logout
+  logoutBtn.addEventListener("click", () => {
+    logout();
+    initUI();
+    menu.classList.remove("right-0");
   });
+
+  // Open Create Listing modal
+  if (createBtn) {
+    createBtn.addEventListener("click", () => {
+      menu.classList.remove("right-0");
+      CreateListingModal();
+    });
+  }
 }

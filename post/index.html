@@ -39,8 +39,13 @@
       class="h-screen w-screen absolute top-0 z-20 backdrop-blur-xs justify-center py-20 hidden"
     ></div>
 
+    <div
+      id="listing-modal"
+      class="h-screen w-screen absolute top-0 z-20 backdrop-blur-xs justify-center py-20 hidden"
+    ></div>
+
     <!-- MAIN SECTION -->
-    <main class="2xl:flex 2xl:items-center">
+    <main class="2xl:flex 2xl:items-center min-h-250">
       <div class="flex my-10 px-5">
         <!-- MAIN IMAGE -->
         <div class="border-2 border-main overflow-hidden rounded-2xl">
@@ -136,6 +141,13 @@
           </div>
         </div>
 
+        <!-- INFO UNDER IMG -->
+        <div class="px-5">
+          <h2 id="listing-main-title" class="text-2xl">Listing title</h2>
+          <p id="listing-main-desc">Listing Description</p>
+          <p id="listing-main-tags" class="text-sm">Listing tags</p>
+        </div>
+
         <!-- BID HISTORY -->
         <div class="flex flex-col px-5">
           <div
@@ -162,13 +174,12 @@
           >
             Place bid
           </button>
-
-          <div
-            id="bid-modal"
-            class="h-screen w-screen absolute top-0 z-20 backdrop-blur-xs justify-center py-20 hidden"
-          ></div>
         </div>
       </div>
+      <div
+        id="bid-modal"
+        class="w-screen h-screen absolute top-0 z-20 backdrop-blur-xs justify-center py-20 hidden"
+      ></div>
     </main>
 
     <!-- FOOTER -->
