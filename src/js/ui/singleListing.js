@@ -1,10 +1,9 @@
-import { API } from "../../../config";
-import { openBidModal } from "./modals/bidModal";
-import { getUser } from "../utils/storage";
-import { openEditListingModal } from "./modals/editListingModal";
+import { API } from "../../../config.js";
+import { openBidModal } from "./modals/bidModal.js";
+import { getUser } from "../utils/storage.js";
+import { openEditListingModal } from "./modals/editListingModal.js";
 
-// Wait for DOM to be ready
-document.addEventListener("DOMContentLoaded", async () => {
+export async function initPostPage() {
   // Get listing ID from URL
   const params = new URLSearchParams(window.location.search);
   const id = params.get("id");
@@ -61,7 +60,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     title.textContent = data.title;
     image.src = data.media?.[0]?.url || "/public/img/Placeholder-img.png";
 
-    // Main info under image
     mainTitle.textContent = data.title;
     mainDesc.textContent = data.description || "No description provided.";
 
@@ -123,4 +121,4 @@ document.addEventListener("DOMContentLoaded", async () => {
   } catch (err) {
     console.error(err);
   }
-});
+}

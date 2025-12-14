@@ -27,3 +27,9 @@ if (window.location.pathname.startsWith("/profile")) {
     initProfilePage();
   });
 }
+
+if (window.location.pathname.startsWith("/post")) {
+  import("./src/js/ui/singleListing.js").then(({ initPostPage }) => {
+    initPostPage();
+  });
+}
