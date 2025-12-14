@@ -10,9 +10,6 @@ lerna-debug.log*
 # Node modules
 node_modules/
 
-# Build outputs
-dist/
-dist-ssr/
 
 # Environment variables
 .env
@@ -35,3 +32,5 @@ Thumbs.db
 
 
 backup.html
+# Local Netlify folder
+.netlify

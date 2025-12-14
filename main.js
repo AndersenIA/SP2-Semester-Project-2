@@ -12,12 +12,18 @@ if (feed) {
   loadFeed();
 }
 
-// Load profile page if user is logged in and on profile page
-if (window.location.pathname.includes("profile/index.html")) {
-  const user = getUser();
-  if (user) {
-    import("./src/js/ui/profile.js").then(({ initProfilePage }) => {
-      initProfilePage();
-    });
-  }
+// // Load profile page if user is logged in and on profile page
+// if (window.location.pathname.includes("profile/index.html")) {
+//   const user = getUser();
+//   if (user) {
+//     import("./src/js/ui/profile.js").then(({ initProfilePage }) => {
+//       initProfilePage();
+//     });
+//   }
+// }
+
+if (window.location.pathname.startsWith("/profile")) {
+  import("./src/js/ui/profile.js").then(({ initProfilePage }) => {
+    initProfilePage();
+  });
 }

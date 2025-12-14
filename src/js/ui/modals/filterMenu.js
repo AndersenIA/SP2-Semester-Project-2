@@ -38,9 +38,7 @@ export function toggleFilterMenu() {
       tagEl.textContent = `${tag} (${count})`;
       tagEl.className = "cursor-pointer hover:underline";
       tagEl.addEventListener("click", () => {
-        window.location.href = `/listings/index.html?tag=${encodeURIComponent(
-          tag
-        )}`;
+        window.location.href = `/listings?tag=${encodeURIComponent(tag)}`;
       });
       tagsContainer.appendChild(tagEl);
     });

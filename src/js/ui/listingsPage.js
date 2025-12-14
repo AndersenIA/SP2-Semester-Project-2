@@ -1,4 +1,3 @@
-// src/js/listings/listingsPage.js
 import { getAllListings } from "../api/listings.js";
 import { renderFeedItems } from "../ui/renderFeed.js";
 import { initFilters } from "./filters.js";
@@ -61,6 +60,6 @@ function showActiveFilter(tag, search) {
   `;
 
   document.getElementById("clear-filter-btn").addEventListener("click", () => {
-    window.location.href = "/listings/index.html";
+    window.location.href = "/listings";
   });
 }

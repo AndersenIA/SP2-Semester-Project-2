@@ -211,7 +211,7 @@ function enableListingClicks() {
     card.addEventListener("click", () => {
       const id = card.dataset.id;
       if (!id) return;
-      window.location.href = `/post/index.html?id=${id}`;
+      window.location.href = `/post?id=${id}`;
     });
   });
 }

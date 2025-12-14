@@ -44,7 +44,7 @@ document.addEventListener("click", (e) => {
   if (!card) return;
 
   const id = card.dataset.id;
-  window.location.href = `/post/index.html?id=${id}`;
+  window.location.href = `/post?id=${id}`;
 });
 
 const searchInput = document.querySelector("#search");
@@ -63,9 +63,7 @@ if (searchInput) {
     if (e.key === "Enter") {
       const query = searchInput.value.trim();
       if (query) {
-        window.location.href = `/listings/index.html?search=${encodeURIComponent(
-          query
-        )}`;
+        window.location.href = `/listings?search=${encodeURIComponent(query)}`;
       }
     }
   });

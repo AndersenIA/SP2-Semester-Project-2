@@ -93,7 +93,7 @@ export function openEditListingModal(listing) {
 
       if (res.ok) {
         alert("Listing deleted.");
-        window.location.href = "/";
+        window.location.href = "/index.html";
       }
     });
 }

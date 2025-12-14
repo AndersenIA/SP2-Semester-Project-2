@@ -1,4 +1,3 @@
-// src/js/listings/filters.js
 import { getAllListings } from "../api/listings.js";
 
 export function initFilters(listingsData) {
@@ -35,9 +34,7 @@ export function initFilters(listingsData) {
       el.className = "cursor-pointer hover:underline";
 
       el.addEventListener("click", () => {
-        window.location.href = `/listings/index.html?tag=${encodeURIComponent(
-          tag
-        )}`;
+        window.location.href = `/listings?tag=${encodeURIComponent(tag)}`;
       });
 
       tagsContainer.appendChild(el);
@@ -63,9 +60,7 @@ export function initFilters(listingsData) {
       if (e.key === "Enter") {
         const q = searchInput.value.trim();
         if (q) {
-          window.location.href = `/listings/index.html?search=${encodeURIComponent(
-            q
-          )}`;
+          window.location.href = `/listings?search=${encodeURIComponent(q)}`;
         }
       }
     });

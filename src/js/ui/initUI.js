@@ -1,4 +1,3 @@
-// src/js/ui/initUI.js
 import { renderNavbar } from "./navbar.js";
 import { initLoginModal } from "./modals/loginModal.js";
 import { toggleMenu } from "./modals/menumodal.js";

@@ -1,4 +1,3 @@
-// src/js/pages/initAllListingsPage.js
 import { getAllListings } from "../api/listings";
 import { timeRemaining } from "../utils/timeRemaining";
 
@@ -53,7 +52,7 @@ export async function initAllListingsPage() {
     // Clickable listings
     grid.querySelectorAll("[data-id]").forEach((card) => {
       card.addEventListener("click", () => {
-        window.location.href = `/post/index.html?id=${card.dataset.id}`;
+        window.location.href = `/post?id=${card.dataset.id}`;
       });
     });
   } catch (err) {

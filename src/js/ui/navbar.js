@@ -14,7 +14,7 @@ export function renderNavbar() {
       ${
         user
           ? `<div class="flex items-center justify-between w-42">
-                <a href="../profile/index.html">
+                <a href="/profile?id=${user.name}">
                   <img class="h-10 rounded-4xl border-2 border-main cursor-pointer" src="${
                     user.avatar?.url ||
                     "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=580"

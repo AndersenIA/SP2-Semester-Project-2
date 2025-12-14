@@ -111,8 +111,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const goToProfile = () => {
       const sellerNameId = data.seller.name;
-      if (sellerNameId)
-        window.location.href = `/profile/index.html?id=${sellerNameId}`;
+      if (sellerNameId) window.location.href = `/profile?id=${sellerNameId}`;
     };
 
     [sellerLink, sellerAvatar, sellerName].forEach((el) =>

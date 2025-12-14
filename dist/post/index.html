@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Listing | The Auction House</title>
+
+    <!-- CSS -->
+    <link href="../src/style.css" rel="stylesheet" />
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=League+Spartan:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- MAIN JS -->
+    <script type="module" src="../main.js"></script>
+    <script defer type="module" src="../src/js/ui/singleListing.js"></script>
+  </head>
+
+  <body class="bg-[#EEEDEA] font-league font-thin overflow-x-hidden">
+    <!-- NAVBAR -->
+    <nav
+      id="navbar"
+      class="bg-[#EEEDEA] flex justify-between items-center py-3 px-5 border-b-2 border-b-main sticky top-0 z-10"
+    ></nav>
+
+    <!-- LOGIN / SIGNUP MODALS -->
+    <div
+      id="login-modal"
+      class="h-screen w-screen absolute top-0 z-20 backdrop-blur-xs justify-center py-20 hidden"
+    ></div>
+
+    <div
+      id="signup-modal"
+      class="h-screen w-screen absolute top-0 z-20 backdrop-blur-xs justify-center py-20 hidden"
+    ></div>
+
+    <div
+      id="listing-modal"
+      class="h-screen w-screen absolute top-0 z-20 backdrop-blur-xs justify-center py-20 hidden"
+    ></div>
+
+    <!-- MAIN SECTION -->
+    <main class="2xl:flex 2xl:items-center min-h-250">
+      <div class="flex my-10 px-5">
+        <!-- MAIN IMAGE -->
+        <div class="border-2 border-main overflow-hidden rounded-2xl">
+          <img
+            id="listing-main-image"
+            class="object-cover size-96 lg:size-192"
+            src=""
+            alt="Listing image"
+          />
+        </div>
+
+        <!-- MOBILE INFO BUTTON -->
+        <div
+          id="mobile-info-div"
+          class="border-2 border-main border-r-0 rounded-bl-2xl rounded-tl-2xl right-0 bg-white md:hidden fixed"
+        >
+          <div class="flex flex-col items-center justify-between w-16 h-32">
+            <div class="flex flex-col items-center">
+              <ion-icon
+                id="mobile-post-info"
+                class="text-main text-3xl cursor-pointer"
+                name="menu-outline"
+              ></ion-icon>
+
+              <img
+                id="mobile-avatar"
+                class="h-10 rounded-full border-2 border-main cursor-pointer"
+                src=""
+                alt="profile picture"
+              />
+            </div>
+            <h2 id="mobile-price">0 EUR</h2>
+          </div>
+        </div>
+
+        <!-- RIGHT INFO PANEL -->
+        <div
+          id="post-full-info"
+          class="fixed 2xl:absolute p-5 border-2 border-r-0 border-main rounded-bl-2xl rounded-tl-2xl -right-110 transition-all duration-300 md:right-0 bg-white"
+        >
+          <div class="flex flex-col justify-between h-full">
+            <!-- SELLER INFO -->
+            <div>
+              <div class="flex justify-between">
+                <div class="flex p-2 border-2 border-main rounded-2xl">
+                  <a id="seller-profile-link" href="#">
+                    <img
+                      id="seller-avatar"
+                      class="h-24 rounded-full border-2 border-main cursor-pointer mr-5"
+                      src=""
+                      alt="profile picture"
+                    />
+                  </a>
+
+                  <div>
+                    <h2 id="seller-name" class="text-2xl"></h2>
+                    <p id="seller-auctions">0 auctions joined</p>
+                    <p id="seller-listings">0 listings</p>
+                  </div>
+                </div>
+
+                <ion-icon
+                  id="close-info-btn"
+                  class="text-2xl cursor-pointer md:hidden pl-10"
+                  name="close-outline"
+                ></ion-icon>
+              </div>
+            </div>
+
+            <!-- TITLE / PRICE / TIME -->
+            <div class="pt-5">
+              <h2 id="listing-title" class="text-2xl 2xl:text-3xl"></h2>
+
+              <div>
+                <p id="listing-remaining" class="text-red-500"></p>
+                <h2 id="listing-price" class="text-2xl"></h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT SIDE CONTENT -->
+      <div class="flex flex-col">
+        <!-- TITLE & PRICE (REPEAT FOR LAYOUT) -->
+        <div>
+          <div class="px-5">
+            <h2 id="title-duplicate" class="text-2xl 2xl:text-3xl"></h2>
+            <div>
+              <p id="price-duplicate" class="2xl:text-4xl py-2"></p>
+              <p id="time-duplicate" class="text-red-500 2xl:text-xl"></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- INFO UNDER IMG -->
+        <div class="px-5">
+          <h2 id="listing-main-title" class="text-2xl">Listing title</h2>
+          <p id="listing-main-desc">Listing Description</p>
+          <p id="listing-main-tags" class="text-sm">Listing tags</p>
+        </div>
+
+        <!-- BID HISTORY -->
+        <div class="flex flex-col px-5">
+          <div
+            class="relative bg-white border-2 border-main rounded-t-2xl my-10 w-sm md:w-3xl"
+          >
+            <div class="flex justify-between border-b border-main px-3 py-3">
+              <h2>Current bid</h2>
+              <p id="current-bid">0 EUR</p>
+            </div>
+
+            <div id="bid-history" class="h-32 overflow-y-auto no-scrollbar">
+              <!-- JS will insert bids here -->
+            </div>
+
+            <div
+              class="pointer-events-none absolute bottom-0 left-0 right-0 h-24 bg-linear-to-t from-white to-transparent"
+            ></div>
+          </div>
+
+          <!-- PLACE BID BUTTON -->
+          <button
+            id="place-bid-btn"
+            class="mb-5 border-2 border-main rounded-2xl w-fit h-fit py-1 px-2 hover:bg-main hover:text-white cursor-pointer md:text-2xl"
+          >
+            Place bid
+          </button>
+        </div>
+      </div>
+      <div
+        id="bid-modal"
+        class="w-screen h-screen absolute top-0 z-20 backdrop-blur-xs justify-center py-20 hidden"
+      ></div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer
+      class="grid grid-cols-3 gap-4 border-t-2 border-t-main rounded-t-4xl py-5 px-5 bg-white"
+    >
+      <div class="border-r-3 border-r-main">
+        <img
+          class="h-24"
+          src="/img/logo auction house without background cropped.png"
+          alt="The auction house logo"
+        />
+        <h4 class="font-julius text-sm md:text-2xl">The Auction House</h4>
+      </div>
+
+      <div class="col-span-2 flex flex-col justify-between">
+        <div class="flex justify-between px-10 pb-10 md:text-xl">
+          <p class="cursor-pointer hover:underline">About us</p>
+          <p class="cursor-pointer hover:underline">Contact</p>
+          <p class="cursor-pointer hover:underline">Positions</p>
+          <p class="cursor-pointer hover:underline">FAQ</p>
+        </div>
+
+        <div class="flex flex-col items-baseline">
+          <p class="md:text-xl">Subscribe to our newsletter</p>
+          <input
+            class="md:text-xl border border-main rounded-md py-1 px-2 mb-3"
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Email..."
+          />
+          <button
+            class="md:text-xl border border-main rounded-md py-1 px-2 cursor-pointer hover:bg-main hover:text-white"
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ION ICONS -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+
+    <!-- JS THAT FILLS THE LISTING -->
+  </body>
+</html>
