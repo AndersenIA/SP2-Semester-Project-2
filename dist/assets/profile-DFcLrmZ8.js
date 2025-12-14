@@ -1,4 +1,4 @@
-import{g as u,A as d,a as f,C as m}from"./index-NQW_88VD.js";function g(t){const e=document.getElementById("profile-modal");e&&(e.innerHTML=`
+import{g as u,A as d,a as f,C as m}from"./main-DSuU0bmY.js";function g(t){const e=document.getElementById("profile-modal");e&&(e.innerHTML=`
     <div class="bg-white w-96 p-5 rounded-3xl border-2 border-main">
       <div class="flex justify-between items-center mb-5">
         <h2 class="text-xl">Edit Profile</h2>
@@ -63,4 +63,4 @@ import{g as u,A as d,a as f,C as m}from"./index-NQW_88VD.js";function g(t){const
       </div>
     `}}}function l(){const t=document.getElementById("profile-info")||document.getElementById("profile-page");if(!t)return;t.innerHTML=`
     <p class="text-center text-xl py-10">You need to log in to view this profile.</p>
-  `;const e=document.getElementById("profile-listings");e&&(e.innerHTML="")}function y(){document.querySelectorAll(".listing-card").forEach(t=>{t.addEventListener("click",()=>{const e=t.dataset.id;e&&(window.location.href=`/post/index.html?id=${e}`)})})}export{L as initProfilePage};
+  `;const e=document.getElementById("profile-listings");e&&(e.innerHTML="")}function y(){document.querySelectorAll(".listing-card").forEach(t=>{t.addEventListener("click",()=>{const e=t.dataset.id;e&&(window.location.href=`/post?id=${e}`)})})}export{L as initProfilePage};
