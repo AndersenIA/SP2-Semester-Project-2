@@ -122,3 +122,5 @@ export async function initPostPage() {
     console.error(err);
   }
 }
+
+export { initPostPage };
