@@ -10,6 +10,7 @@ export default defineConfig({
         main: resolve(__dirname, "index.html"),
         profile: resolve(__dirname, "profile/index.html"),
         post: resolve(__dirname, "post/index.html"),
+        listings: resolve(__dirname, "listings/index.html"),
       },
     },
   },

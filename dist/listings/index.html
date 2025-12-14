@@ -9,7 +9,8 @@
       href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=League+Spartan:wght@100..900&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="/assets/main-D9sgWMsp.js"></script>
+    <script type="module" crossorigin src="/assets/listings-B9gp5eJj.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/main-D9sgWMsp.js">
     <link rel="stylesheet" crossorigin href="/assets/main-DPOqpEQ9.css">
   </head>
   <body class="bg-[#EEEDEA] font-league font-thin overflow-x-hidden">
@@ -17,7 +18,26 @@
       id="navbar"
       class="bg-[#EEEDEA] flex justify-between items-center py-3 px-5 border-b-2 border-b-main sticky top-0 z-10"
     ></nav>
-
+    <div class="py-3 flex justify-between px-5 border-b-2 border-b-main">
+      <button
+        id="filter-btn"
+        class="filter-btn border-2 border-main rounded-xl py-1 px-3 cursor-pointer"
+      >
+        Filter
+      </button>
+      <input
+        class="border-2 border-main rounded-xl px-2"
+        type="search"
+        name="search"
+        id="search"
+        placeholder="Search..."
+      />
+    </div>
+    <!-- Filter menu -->
+    <div
+      id="filter-menu"
+      class="absolute -left-96 top-22 border-2 border-main border-l-0 rounded-br-3xl h-120 w-62 bg-white/30 backdrop-blur-3xl transition-all duration-150 overflow-x-scroll no-scrollbar z-100"
+    ></div>
     <!-- LOGIN/SIGN UP MODAL -->
     <div
       id="login-modal"
@@ -27,34 +47,16 @@
       id="signup-modal"
       class="h-screen w-screen absolute top-0 z-20 backdrop-blur-xs justify-center py-20 hidden"
     ></div>
+
     <div
-      id="profile-modal"
-      class="hidden h-screen w-screen absolute top-0 z-20 backdrop-blur-xs justify-center items-center"
+      id="listing-modal"
+      class="h-screen w-screen absolute top-0 z-20 backdrop-blur-xs justify-center py-20 hidden"
     ></div>
-
-    <main id="profile-page">
-      <!-- PROFILE HEADER (JS fills this) -->
-      <div id="profile-info"></div>
-      <!-- Listing modal -->
-      <div
-        id="listing-modal"
-        class="h-screen w-screen absolute top-0 z-20 backdrop-blur-xs justify-center py-20 hidden"
-      ></div>
-
-      <!-- USER LISTINGS -->
-      <section class="py-16">
-        <h2 class="font-julius text-center text-2xl">Your listings</h2>
-
-        <!-- JS will fill this -->
-        <div
-          id="profile-listings"
-          class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 py-14 px-5"
-        ></div>
-      </section>
+    <main id="all-listings">
+      <div id="listings-container"></div>
     </main>
-
     <footer
-      class="grid grid-cols-3 gap-4 border-t-2 border-t-main rounded-t-4xl py-5 px-5 bg-white w-screen"
+      class="grid grid-cols-3 gap-4 border-t-2 border-t-main rounded-t-4xl py-5 px-5 bg-white"
     >
       <div class="border-r-3 border-r-main">
         <img
@@ -96,6 +98,6 @@
     <script
       nomodule
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
-    ></script>
+    ></script>
   </body>
 </html>
