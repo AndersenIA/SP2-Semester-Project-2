@@ -1,4 +1,5 @@
 import { API, API_KEY } from "../../../../config.js";
+import { getUser } from "../../utils/storage.js";
 
 export function CreateListingModal() {
   const createModal = document.getElementById("listing-modal");
@@ -68,7 +69,7 @@ export function CreateListingModal() {
     if (!title || !endsAtInput)
       return alert("Title and End Date are required!");
 
-    const user = JSON.parse(localStorage.getItem("user"));
+    const user = getUser();
     if (!user) return alert("You must be logged in.");
 
     const listingData = {

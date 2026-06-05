@@ -1,4 +1,5 @@
 import { loginUser } from "../../api/auth.js";
+import { saveUser } from "../../utils/storage.js";
 
 let loginModalElement; // keep reference to modal
 
@@ -69,7 +70,7 @@ export function initLoginModal() {
 
       try {
         const user = await loginUser(credentials);
-        localStorage.setItem("user", JSON.stringify(user));
+        saveUser(user);
 
         // Re-render navbar
         const { renderNavbar } = await import("../navbar.js");

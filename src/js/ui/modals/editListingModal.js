@@ -1,4 +1,5 @@
 import { API, API_KEY } from "../../../../config";
+import { getUser } from "../../utils/storage";
 
 export function openEditListingModal(listing) {
   const modal = document.getElementById("bid-modal"); // reuse same modal container
@@ -57,7 +58,7 @@ export function openEditListingModal(listing) {
           .filter(Boolean),
       };
 
-      const token = JSON.parse(localStorage.getItem("user")).accessToken;
+      const token = getUser()?.accessToken;
 
       const res = await fetch(`${API}/auction/listings/${listing.id}`, {
         method: "PUT",
@@ -79,7 +80,7 @@ export function openEditListingModal(listing) {
   document
     .getElementById("delete-listing")
     .addEventListener("click", async () => {
-      const token = JSON.parse(localStorage.getItem("user")).accessToken;
+      const token = getUser()?.accessToken;
 
       if (!confirm("Are you sure you want to delete this listing?")) return;
 
